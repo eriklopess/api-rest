@@ -1,9 +1,17 @@
+const Aluno = require("../models/Aluno");
+
 class HomeController {
-    index(req, res) {
-        res.status(200).json({
-            allRight: true
-        })
-    }
+  async index(req, res) {
+    const novoAluno = await Aluno.create({
+      nome: "Luiz",
+      sobrenome: "Otávio",
+      email: "luiz@gmail.com",
+      idade: 112,
+      peso: 300,
+      altura: 2.5,
+    });
+    res.json(novoAluno);
+  }
 }
 
 module.exports = new HomeController();
