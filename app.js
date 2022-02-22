@@ -1,9 +1,9 @@
 const dotenv = require("dotenv");
+const express = require("express");
+const { resolve } = require("path");
 dotenv.config();
 
 require("./src/database/index");
-
-const express = require("express");
 
 const homeRoutes = require("./src/routes/homeRoutes");
 const userRoutes = require("./src/routes/userRoutes");
@@ -21,6 +21,7 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use(express.static(resolve(__dirname, "uploads")));
   }
 
   routes() {

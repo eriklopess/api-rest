@@ -70,6 +70,9 @@ class Aluno extends Sequelize.Model {
     );
     return this;
   }
+  static associate(models) {
+    return this.hasMany(models.Image, { foreignKey: "aluno_id" });
+  }
 }
 
 module.exports = Aluno;

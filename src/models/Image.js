@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+const { appConfig } = require("../config/appConfig");
 
 class Image extends Sequelize.Model {
   static init(sequelize) {
@@ -22,16 +23,18 @@ class Image extends Sequelize.Model {
             },
           },
         },
+        url: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return `${appConfig.url}/images/${this.getDataValue("filename")}`;
+          },
+        },
       },
       {
         sequelize,
       }
     );
     return this;
-  }
-
-  static associate(models) {
-    return this.belongsTo(models.Aluno, { foreignKey: "aluno_id" });
   }
 }
 
