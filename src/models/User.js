@@ -49,11 +49,18 @@ class User extends Sequelize.Model {
 
     this.addHook("beforeSave", async (user) => {
       if (user.password) {
-        user.password_hash = await bcryptjs.hash(user.password_hash, 8);
+        user.password_hash = bcryptjs.hashSync(
+          user.password,
+          this.password_hash
+        );
       }
     });
 
     return this;
+  }
+
+  passwordIsValid(password) {
+    return bcryptjs.compareSync(password, this.password_hash);
   }
 }
 
