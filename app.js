@@ -4,10 +4,12 @@ dotenv.config();
 require("./src/database/index");
 
 const express = require("express");
+
 const homeRoutes = require("./src/routes/homeRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const tokenRoutes = require("./src/routes/tokenRoutes");
 const alunoRoutes = require("./src/routes/alunoRoutes");
+const imageRoutes = require("./src/routes/imageRoutes");
 
 class App {
   constructor() {
@@ -26,6 +28,7 @@ class App {
     this.app.use("/users", userRoutes);
     this.app.use("/tokens", tokenRoutes);
     this.app.use("/alunos", alunoRoutes);
+    this.app.use("/image", imageRoutes);
   }
 }
 
