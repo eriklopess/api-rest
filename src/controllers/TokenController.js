@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 class TokenController {
   async store(req, res) {
     const { email = "", password = "" } = req.body;
+    console.log(req.body);
 
     if (!email || !password) {
       return res.status(401).json({
@@ -29,8 +30,7 @@ class TokenController {
     const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });
-
-    return res.json({ token });
+    return res.json({ token, user: { name: user.nome, id, email } });
   }
 }
 
