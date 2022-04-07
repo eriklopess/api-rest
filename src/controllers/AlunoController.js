@@ -2,7 +2,7 @@ const Aluno = require("../models/Aluno");
 const Image = require("../models/Image");
 
 class HomeController {
-  async index(req, res) {
+  async index(_req, res) {
     const alunos = await Aluno.findAll({
       attributes: [
         "id",

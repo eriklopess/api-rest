@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 const URL = process.env.URL;
 
 exports.appConfig = {

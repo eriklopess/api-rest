@@ -12,18 +12,6 @@ const tokenRoutes = require("./src/routes/tokenRoutes");
 const alunoRoutes = require("./src/routes/alunoRoutes");
 const imageRoutes = require("./src/routes/imageRoutes");
 
-const whiteList = ["http://35.247.194.102", "http://localhost:3000"];
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if(whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'), false)
-    }
-  }
-};
-
 class App {
   constructor() {
     this.app = express();
@@ -32,7 +20,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(cors(corsOptions));
+    this.app.use(cors());
     this.app.use(bodyParser.json());
     this.app.use(
       bodyParser.urlencoded({
@@ -44,7 +32,7 @@ class App {
 
   routes() {
     this.app.use("/users", userRoutes);
-    this.app.use("/tokens", tokenRoutes);
+    this.app.use("/auth", tokenRoutes);
     this.app.use("/alunos", alunoRoutes);
     this.app.use("/image", imageRoutes);
   }

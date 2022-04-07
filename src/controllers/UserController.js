@@ -14,33 +14,6 @@ class UserController {
     }
   }
 
-  async index(req, res) {
-    try {
-      const users = await User.findAll({ attributes: ["id", "nome", "email"] });
-      res.json(users);
-    } catch (e) {
-      return res
-        .status(400)
-        .json({ errors: e.errors.map((err) => err.message) });
-    }
-  }
-
-  async show(req, res) {
-    try {
-      const { id } = req.params;
-      console.log("USER ID: " + req.userId);
-      console.log("USER EMAIL: " + req.userEmail);
-      const user = await User.findByPk(id, {
-        attributes: ["id", "nome", "email"],
-      });
-      res.json(user);
-    } catch (e) {
-      return res
-        .status(400)
-        .json({ errors: e.errors.map((err) => err.message) });
-    }
-  }
-
   async update(req, res) {
     try {
       const user = await User.findByPk(req.userId);
