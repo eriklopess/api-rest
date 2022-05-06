@@ -146,7 +146,7 @@ Uma aplicação que simula o sistema de uma escola.
 ## Como usar
 
 * Faça o clone do do repositório.
-`git clone git@github.com:eriklopess/currency-wallet.git`
+`git clone git@github.com:eriklopess/api-rest.git`
 
 * Instale todas as dependências.
 
