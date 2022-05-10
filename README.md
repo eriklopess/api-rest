@@ -1,5 +1,5 @@
 
-# API-REST
+# Sistema escola
 
 Uma aplicação que simula o sistema de uma escola.
 
